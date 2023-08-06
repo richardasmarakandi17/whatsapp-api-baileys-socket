@@ -22,10 +22,6 @@ export default async function connectToWhatsApp (phone_number: string) {
         })
         sock.ev.on('messages.upsert', async m => {
             console.log(JSON.stringify(m, undefined, 2))
-    
-            if (!m.messages[0].key.fromMe) {
-                await sock.sendMessage(m.messages[0].key.remoteJid!, { text: 'Hello there!' })
-            }
         })
     })
     return readySock
